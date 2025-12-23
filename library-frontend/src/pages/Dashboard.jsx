@@ -42,9 +42,9 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const [resAuth, resCat, resBook] = await Promise.all([
-        axios.get('http://localhost:3000/authors'),
-        axios.get('http://localhost:3000/categories'),
-        axios.get('http://localhost:3000/books'),
+        axios.get('https://library-api-ynpo.onrender.com/authors'),
+        axios.get('https://library-api-ynpo.onrender.com/categories'),
+        axios.get('https://library-api-ynpo.onrender.com/books'),
       ]);
       setAuthors(resAuth.data);
       setCategories(resCat.data);
@@ -58,7 +58,7 @@ const Dashboard = () => {
   const addAuthor = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/authors', { name: newAuthorName }, {
+      await axios.post('https://library-api-ynpo.onrender.com/authors', { name: newAuthorName }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Yazar eklendi!');
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const addCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/categories', { name: newCategoryName }, {
+      await axios.post('https://library-api-ynpo.onrender.com/categories', { name: newCategoryName }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Kategori eklendi!');
@@ -88,7 +88,7 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.post('http://localhost:3000/books', {
+      await axios.post('https://library-api-ynpo.onrender.com/books', {
         ...newBook,
         authorId: Number(newBook.authorId) // Sayıya çevir
       }, {
@@ -107,7 +107,7 @@ const Dashboard = () => {
   const deleteItem = async (endpoint, id) => {
     if(!window.confirm("Silmek istediğinize emin misiniz?")) return;
     try {
-      await axios.delete(`http://localhost:3000/${endpoint}/${id}`, {
+      await axios.delete(`https://library-api-ynpo.onrender.com/${endpoint}/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.info('Silindi.');

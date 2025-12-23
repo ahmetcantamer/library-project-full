@@ -8,7 +8,7 @@ const Home = () => {
 
   useEffect(() => {
     // Sayfa açılınca kitapları çek
-    axios.get('http://localhost:3000/books')
+    axios.get('https://library-api-ynpo.onrender.com/books')
       .then((res) => setBooks(res.data))
       .catch((err) => console.error("Kitaplar çekilemedi:", err));
   }, []);

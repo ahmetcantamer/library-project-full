@@ -27,7 +27,7 @@ const Register = () => {
 
     try {
       // 1. Backend'e Kayıt İsteği At
-      await axios.post('http://localhost:3000/auth/register', formData);
+      await axios.post('https://library-api-ynpo.onrender.com/auth/register', formData);
 
       // 2. Başarılıysa Login'e Yönlendir
       toast.success('Kayıt başarılı! Şimdi giriş yapabilirsin.');
